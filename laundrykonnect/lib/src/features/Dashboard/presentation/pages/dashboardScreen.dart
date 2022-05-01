@@ -27,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: appBar('Dashboard', true),
+      appBar: appBar('Dashboard', true, true),
       body: Scrollbar(
         thickness: 6,
         child: SingleChildScrollView(

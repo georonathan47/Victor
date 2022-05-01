@@ -17,7 +17,7 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: appBar('View All', false, context: context),
+      appBar: appBar('View All', false, false, context: context),
     );
   }
 }

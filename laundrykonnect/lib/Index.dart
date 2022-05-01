@@ -1,7 +1,10 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
+import 'package:laundrykonnect/src/features/History/presentation/pages/history.dart';
 
 import 'src/features/Dashboard/presentation/pages/dashboardScreen.dart';
+import 'src/features/Services/presentation/pages/services.dart';
 
 class Index extends StatefulWidget {
   const Index({Key key}) : super(key: key);
@@ -24,15 +27,15 @@ class _IndexState extends State<Index> {
   Widget navigator(int index) {
     if (index == 0) {
       return const DashboardScreen();
-      // } else if (index == 1) {
-      //   return const ServicesScreen();
-      // } else if (index == 2) {
-      //   return const PaymentScreen(showButton: false);
+    } else if (index == 1) {
+      return const ServicesScreen();
+    } else if (index == 2) {
+      return const HistoryScreen();
       // } else if (index == 3) {
       //   return const LitigationScreen();
       // } else if (index == 4) {
       //   return const AccountScreen();
-      } else {
+    } else {
       return null;
     }
   }
@@ -68,18 +71,11 @@ class _IndexState extends State<Index> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.payment_outlined,
+            Icons.history_outlined,
             size: 30,
           ),
-          label: 'Pay',
+          label: 'History',
         ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(
-        //     Icons.account_balance_outlined,
-        //     size: 30,
-        //   ),
-        //   label: 'Litigation',
-        // ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.more_horiz_outlined,

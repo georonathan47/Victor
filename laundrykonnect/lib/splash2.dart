@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:http/http.dart';
+// import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
@@ -78,7 +78,7 @@ class _SplashScreen2State extends State<SplashScreen2>
 
     return Scaffold(
       // backgroundColor: Colors.deepPurple,
-      backgroundColor: Colors.white,
+      backgroundColor: BACKGROUND_COLOR,
       body: Stack(
         children: [
           Column(
