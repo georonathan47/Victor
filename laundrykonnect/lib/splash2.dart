@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
@@ -96,6 +97,8 @@ class _SplashScreen2State extends State<SplashScreen2>
                     color: kBACKGROUND_COLOR,
                     fontWeight: FontWeight.bold,
                     fontSize: animation1.value,
+                    fontStyle: FontStyle.italic,
+                    letterSpacing: 1.75,
                   ),
                 ),
               ),
