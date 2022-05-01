@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
 
@@ -94,7 +93,7 @@ class _SplashScreen2State extends State<SplashScreen2>
                 child: Text(
                   'Laundary Konect',
                   style: GoogleFonts.lato(
-                    color: BACKGROUND_COLOR,
+                    color: kBACKGROUND_COLOR,
                     fontWeight: FontWeight.bold,
                     fontSize: animation1.value,
                   ),
@@ -114,7 +113,7 @@ class _SplashScreen2State extends State<SplashScreen2>
                 width: _width / _containerSize,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: BACKGROUND_COLOR,
+                  color: kBACKGROUND_COLOR,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Image.asset('assets/images/logo.png'),

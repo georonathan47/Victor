@@ -17,9 +17,13 @@ class LaundryKonnect extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: FlexColorScheme.light(
-        scheme: FlexScheme.flutterDash
-      ).toTheme,
+      // theme: FlexColorScheme.light(
+      //   scheme: FlexScheme.flutterDash
+      // ).toTheme,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: const SplashScreen2(),
     );
   }
