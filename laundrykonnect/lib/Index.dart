@@ -73,13 +73,13 @@ class _IndexState extends State<Index> {
           ),
           label: 'Pay',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.account_balance_outlined,
-            size: 30,
-          ),
-          label: 'Litigation',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.account_balance_outlined,
+        //     size: 30,
+        //   ),
+        //   label: 'Litigation',
+        // ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.more_horiz_outlined,

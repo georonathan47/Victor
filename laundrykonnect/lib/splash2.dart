@@ -91,7 +91,7 @@ class _SplashScreen2State extends State<SplashScreen2>
                 duration: const Duration(milliseconds: 1000),
                 opacity: _textOpacity,
                 child: Text(
-                  'Laundary Konect',
+                  'Laundry Konect',
                   style: GoogleFonts.lato(
                     color: kBACKGROUND_COLOR,
                     fontWeight: FontWeight.bold,

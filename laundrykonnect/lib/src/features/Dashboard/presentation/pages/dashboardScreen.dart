@@ -49,7 +49,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Welcome ',
+                          'Welcome, ',
                           style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         addVertical(10),
                         Text(
-                          'Laundry Konect',
+                          'Dr. Ben Kwofie',
                           style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -84,7 +84,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.6,
+                    height: MediaQuery.of(context).size.height * 0.65,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
@@ -110,6 +110,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 child: addSubText(
                                   'View All',
                                   color: kSecondColor,
+                                  fontStyle: FontStyle.normal,
                                 ),
                               ),
                             ],
@@ -218,8 +219,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 1.5,
-                                crossAxisSpacing: 5,
+                                childAspectRatio: 1.325,
+                                crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
                               ),
                             ),
