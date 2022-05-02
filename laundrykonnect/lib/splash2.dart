@@ -1,10 +1,14 @@
 import 'dart:async';
-// import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'Index.dart';
+import 'core/utils/Path.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({Key key}) : super(key: key);
@@ -22,6 +26,90 @@ class _SplashScreen2State extends State<SplashScreen2>
 
   AnimationController _controller;
   Animation<double> animation1;
+
+  FlutterSecureStorage secureStorage = FlutterSecureStorage();
+  FlutterAppAuth appAuth = FlutterAppAuth();
+  bool isBusy = false;
+  bool isLoggedIn = false;
+  String errorMessage;
+  String name;
+  String picture;
+
+  Map<String, dynamic> parseIdToken(String idToken) {
+    final parts = idToken.split(r'.');
+    assert(parts.length == 3);
+
+    return jsonDecode(
+      utf8.decode(
+        base64Url.decode(
+          base64Url.normalize(parts[1]),
+        ),
+      ),
+    );
+  }
+
+  Future<Map> getUserDetails(String accessToken) async {
+    final url = 'https://$AUTH0_DOMAIN/userinfo';
+    final response = await http.get(
+      Uri.parse(url),
+      headers: {'Authorization': 'Bearer $accessToken'},
+    );
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception('Failed to get user details');
+    }
+  }
+
+  Future<void> loginAction() async {
+    setState(() {
+      isBusy = true;
+      errorMessage = '';
+    });
+
+    try {
+      final AuthorizationTokenResponse result =
+          await appAuth.authorizeAndExchangeCode(
+        AuthorizationTokenRequest(
+          CLIENT_ID,
+          REDIRECT_URI,
+          issuer: 'https://$AUTH0_DOMAIN',
+          scopes: ['openid', 'profile', 'offline_access'],
+          promptValues: ['login'],
+        ),
+      );
+
+      final idToken = parseIdToken(result.idToken);
+      final profile = await getUserDetails(result.accessToken);
+
+      await secureStorage.write(
+          key: 'refresh_token', value: result.refreshToken);
+
+      setState(() {
+        isBusy = false;
+        isLoggedIn = true;
+        name = idToken['name'];
+        picture = profile['picture'];
+      });
+    } catch (e, s) {
+      print('login error: $e - stack: $s');
+
+      setState(() {
+        isBusy = false;
+        isLoggedIn = false;
+        errorMessage = e.toString();
+      });
+    }
+  }
+
+  void logoutAction() async {
+    await secureStorage.delete(key: 'refresh_token');
+    setState(() {
+      isLoggedIn = false;
+      isBusy = false;
+    });
+  }
 
   @override
   void initState() {
@@ -127,6 +215,53 @@ class _SplashScreen2State extends State<SplashScreen2>
       ),
     );
   }
+
+  void initAction() async {
+    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
+    if (storedRefreshToken == null) return;
+
+    setState(() {
+      isBusy = true;
+    });
+
+    try {
+      final response = await appAuth.token(TokenRequest(
+        CLIENT_ID,
+        REDIRECT_URI,
+        issuer: AUTH0_ISSUER,
+        refreshToken: storedRefreshToken,
+      ));
+
+      final idToken = parseIdToken(response.idToken);
+      final profile = await getUserDetails(response.accessToken);
+
+      secureStorage.write(key: 'refresh_token', value: response.refreshToken);
+
+      setState(() {
+        isBusy = false;
+        isLoggedIn = true;
+        name = idToken['name'];
+        picture = profile['picture'];
+      });
+    } catch (e, s) {
+      print('error on refresh token: $e - stack: $s');
+      logoutAction();
+    }
+  }
+
+  Future<void> goToHome(BuildContext context) async {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const Index(),
+      ),
+    );
+  }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   // TODO: implement build
+  //   throw UnimplementedError();
+  // }
 }
 
 class PageTransition extends PageRouteBuilder {
@@ -151,12 +286,4 @@ class PageTransition extends PageRouteBuilder {
             );
           },
         );
-}
-
-Future<void> goToHome(BuildContext context) async {
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(
-      builder: (context) => const Index(),
-    ),
-  );
 }

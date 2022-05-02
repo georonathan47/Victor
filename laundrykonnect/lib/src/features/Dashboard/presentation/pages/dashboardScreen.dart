@@ -16,13 +16,52 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  Map<String, dynamic> data = {
-    "name": "Laundry Konnect",
-    "address": "Kathmandu, Nepal",
-    "phone": "+977-9876543210",
-    "email": "",
-    "image": "assets/images/logo.png",
-  };
+  List<Orders> data = const [
+    Orders(
+      image: 'assets/images/shirts.png',
+      title: 'Ironing',
+    ),
+    Orders(
+      image: 'assets/images/washing-machine.png',
+      title: 'Washing',
+    ),
+    Orders(
+      image: 'assets/images/washing-machine.png',
+      title: 'Washing',
+    ),
+
+    Orders(
+      image: 'assets/images/laundry.png',
+      title: 'Dry Cleaning',
+    ),
+    Orders(
+      image: 'assets/images/laundry.png',
+      title: 'Dry Cleaning',
+    ),
+    Orders(
+      image: 'assets/images/laundry.png',
+      title: 'Dry Cleaning',
+    ),
+  ];
+
+  List<Services> services = const [
+    Services(
+      image: 'assets/images/washing-machine.png',
+      title: 'Washing',
+    ),
+    Services(
+      image: 'assets/images/iron.png',
+      title: 'Ironing',
+    ),
+    Services(
+      image: 'assets/images/laundry.png',
+      title: 'Dry Cleaning',
+    ),
+    Services(
+      image: 'assets/images/washing-machine.png',
+      title: 'Bulk Washing',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +98,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         addVertical(10),
                         Text(
-                          'Dr. Ben Kwofie',
+                          'Victor',
                           style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -170,11 +209,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
                   children: [
-                    Image.asset('assets/images/shirts.png'),
+                    Center(child: Image.asset(data[index].image)),
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: addHeaderTextWithStyle(
-                        'Your Laundry',
+                        data[index].title,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                         color: AZURE,
@@ -205,7 +244,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           itemBuilder: (context, index) {
             return Container(
               decoration: const BoxDecoration(
-                color: Colors.white38,
+                color: kSecondColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
@@ -221,13 +260,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       Center(
                         child: Image.asset(
-                          'assets/images/washing-machine.png',
+                          services[index].image,
                         ),
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: addSubText(
-                          'sleep',
+                          services[index].title,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: AZURE,
@@ -250,4 +289,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
+}
+
+class Services {
+  final String image;
+  final String title;
+
+  const Services({
+    this.image,
+    this.title,
+  });
+}
+
+class Orders {
+  final String image;
+  final String title;
+
+  const Orders({
+    this.image,
+    this.title,
+  });
 }
