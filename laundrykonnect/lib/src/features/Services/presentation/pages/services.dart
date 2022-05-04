@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:laundrykonnect/core/components/appBar.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
 
+import '../../../../../core/constants/widgetFunctions.dart';
+import '../../data/models/ServicesCard.dart';
+
 class ServicesScreen extends StatefulWidget {
   const ServicesScreen({Key key}) : super(key: key);
 
@@ -16,7 +19,62 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: appBarNoLogo('Services', true, context: context),
+      appBar: appBarNoLogo('Services', true, null, context: context),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        decoration: const BoxDecoration(color: BACKGROUND_COLOR),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            addHeaderText('Our services include: '), 
+            const Divider(thickness: .75, color: kBACKGROUND_COLOR),
+            addVertical(15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ServicesCard(
+                    'Washing',
+                    'assets/images/washing-machine.png',
+                    context,
+                  ),
+                ),
+                addHorizontal(10),
+                Expanded(
+                  child: ServicesCard(
+                    'Dry Cleaning',
+                    'assets/images/logo.png',
+                    context,
+                  ),
+                ),
+              ],
+            ),
+            addVertical(15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ServicesCard(
+                    'Ironing',
+                    'assets/images/iron.png',
+                    context,
+                  ),
+                ),
+                addHorizontal(10),
+                Expanded(
+                  child: ServicesCard(
+                    'Dry Cleaning',
+                    'assets/images/laundry.png',
+                    context,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

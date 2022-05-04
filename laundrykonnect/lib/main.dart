@@ -1,4 +1,5 @@
 // import 'package:flex_color_scheme/flex_color_scheme.dart';
+// ignore_for_file: no_logic_in_create_state
 import 'package:flutter/material.dart';
 import 'splash2.dart';
 

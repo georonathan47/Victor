@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
 import 'package:laundrykonnect/core/constants/widgetFunctions.dart';
 import 'package:laundrykonnect/src/features/Dashboard/presentation/pages/viewAll.dart';
+import 'package:laundrykonnect/src/features/History/presentation/pages/history.dart';
 
 import '../../../../../core/components/appBar.dart';
 
@@ -29,7 +30,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       image: 'assets/images/washing-machine.png',
       title: 'Washing',
     ),
-
     Orders(
       image: 'assets/images/laundry.png',
       title: 'Dry Cleaning',
@@ -62,6 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       title: 'Bulk Washing',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +141,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 4.5, horizontal: 5),
+                            vertical: 4.5,
+                            horizontal: 5,
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -149,7 +152,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const ViewAllScreen(),
+                                    builder: (context) => const HistoryScreen(
+                                      showBefore: true,
+                                    ),
                                   ),
                                 ),
                                 child: addSubText(
@@ -216,7 +221,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         data[index].title,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: AZURE,
+                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -258,18 +263,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Stack(
                     children: [
-                      Center(
-                        child: Image.asset(
-                          services[index].image,
-                        ),
-                      ),
+                      Image.asset(services[index].image),
                       Align(
-                        alignment: Alignment.bottomRight,
+                        alignment: Alignment.topRight,
                         child: addSubText(
                           services[index].title,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: AZURE,
+                          color: Colors.white,
                           fontStyle: FontStyle.italic,
                         ),
                       ),

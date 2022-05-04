@@ -36,7 +36,7 @@ AppBar appBar(String text, bool isDashboard, bool isIndex,
   );
 }
 
-AppBar appBarNoLogo(String text, bool isIndex, {BuildContext context}) {
+AppBar appBarNoLogo(String text, bool isIndex, Color color,{BuildContext context}) {
   return AppBar(
     backgroundColor: AZURE,
     elevation: 0.5,
@@ -45,9 +45,9 @@ AppBar appBarNoLogo(String text, bool isIndex, {BuildContext context}) {
         ? null
         : IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(
+            icon: Icon(
               Icons.navigate_before,
-              color: Colors.black,
+              color: color,
               size: 30,
             ),
           ),

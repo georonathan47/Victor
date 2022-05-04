@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:laundrykonnect/core/utils/wrapper.dart';
 
 import 'Index.dart';
 import 'core/utils/Path.dart';
@@ -27,8 +28,8 @@ class _SplashScreen2State extends State<SplashScreen2>
   AnimationController _controller;
   Animation<double> animation1;
 
-  FlutterSecureStorage secureStorage = FlutterSecureStorage();
-  FlutterAppAuth appAuth = FlutterAppAuth();
+  final FlutterAppAuth appAuth = FlutterAppAuth();
+  FlutterSecureStorage secureStorage = const FlutterSecureStorage();
   bool isBusy = false;
   bool isLoggedIn = false;
   String errorMessage;
@@ -41,15 +42,13 @@ class _SplashScreen2State extends State<SplashScreen2>
 
     return jsonDecode(
       utf8.decode(
-        base64Url.decode(
-          base64Url.normalize(parts[1]),
-        ),
+        base64Url.decode(base64Url.normalize(parts[1])),
       ),
     );
   }
 
   Future<Map> getUserDetails(String accessToken) async {
-    final url = 'https://$AUTH0_DOMAIN/userinfo';
+    const url = 'https://$AUTH0_DOMAIN/userinfo';
     final response = await http.get(
       Uri.parse(url),
       headers: {'Authorization': 'Bearer $accessToken'},
@@ -103,14 +102,6 @@ class _SplashScreen2State extends State<SplashScreen2>
     }
   }
 
-  void logoutAction() async {
-    await secureStorage.delete(key: 'refresh_token');
-    setState(() {
-      isLoggedIn = false;
-      isBusy = false;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -141,15 +132,14 @@ class _SplashScreen2State extends State<SplashScreen2>
       });
     });
 
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () async {
       setState(() {
         Navigator.pushReplacement(
           context,
-          PageTransition(
-            const Index(),
-          ),
+          PageTransition(const Wrapper()),
         );
       });
+      Future.delayed(const Duration(milliseconds: 2500));
     });
   }
 
@@ -215,53 +205,6 @@ class _SplashScreen2State extends State<SplashScreen2>
       ),
     );
   }
-
-  void initAction() async {
-    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
-    if (storedRefreshToken == null) return;
-
-    setState(() {
-      isBusy = true;
-    });
-
-    try {
-      final response = await appAuth.token(TokenRequest(
-        CLIENT_ID,
-        REDIRECT_URI,
-        issuer: AUTH0_ISSUER,
-        refreshToken: storedRefreshToken,
-      ));
-
-      final idToken = parseIdToken(response.idToken);
-      final profile = await getUserDetails(response.accessToken);
-
-      secureStorage.write(key: 'refresh_token', value: response.refreshToken);
-
-      setState(() {
-        isBusy = false;
-        isLoggedIn = true;
-        name = idToken['name'];
-        picture = profile['picture'];
-      });
-    } catch (e, s) {
-      print('error on refresh token: $e - stack: $s');
-      logoutAction();
-    }
-  }
-
-  Future<void> goToHome(BuildContext context) async {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const Index(),
-      ),
-    );
-  }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   // TODO: implement build
-  //   throw UnimplementedError();
-  // }
 }
 
 class PageTransition extends PageRouteBuilder {
