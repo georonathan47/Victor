@@ -6,7 +6,7 @@ import 'package:laundrykonnect/core/constants/colors.dart';
 import '../../../../../core/components/appBar.dart';
 
 class ViewAllScreen extends StatefulWidget {
-  const ViewAllScreen({Key key}) : super(key: key);
+  const ViewAllScreen({Key? key}) : super(key: key);
 
   @override
   State<ViewAllScreen> createState() => _ViewAllScreenState();

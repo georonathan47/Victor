@@ -6,12 +6,12 @@ import 'package:laundrykonnect/core/constants/colors.dart';
 import 'package:laundrykonnect/core/constants/widgetFunctions.dart';
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key key, this.showBefore}) : super(key: key);
+  const HistoryScreen({Key? key, this.showBefore}) : super(key: key);
 
-  final bool showBefore;
+  final bool? showBefore;
 
   @override
-  State<HistoryScreen> createState() => _HistoryScreenState(this.showBefore);
+  State<HistoryScreen> createState() => _HistoryScreenState(showBefore!);
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
@@ -22,7 +22,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
       appBar: showBefore == false
-          ? appBarNoLogo('Order History', true, null, context: context)
+          ? appBarNoLogo('Order History', true, Colors.transparent, context: context)
           : appBarNoLogo('Order History', true, Colors.black, context: context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),

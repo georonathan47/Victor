@@ -8,7 +8,7 @@ import '../../../../../core/constants/widgetFunctions.dart';
 import '../../data/models/ServicesCard.dart';
 
 class ServicesScreen extends StatefulWidget {
-  const ServicesScreen({Key key}) : super(key: key);
+  const ServicesScreen({Key? key}) : super(key: key);
 
   @override
   State<ServicesScreen> createState() => _ServicesScreenState();
@@ -19,7 +19,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: appBarNoLogo('Services', true, null, context: context),
+      appBar: appBarNoLogo('Services', true, Colors.transparent, context: context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: const BoxDecoration(color: BACKGROUND_COLOR),

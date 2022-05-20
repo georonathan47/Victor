@@ -3,10 +3,10 @@ import 'package:laundrykonnect/core/constants/widgetFunctions.dart';
 
 class Profile extends StatelessWidget {
   final logoutAction;
-  final String name;
-  final String picture;
+  final String? name;
+  final String? picture;
 
-  const Profile(this.logoutAction, this.name, this.picture, {Key key})
+  const Profile(this.logoutAction, this.name, this.picture, {Key? key})
       : super(key: key);
 
   @override

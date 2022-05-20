@@ -10,7 +10,7 @@ void main() {
 }
 
 class LaundryKonnect extends StatelessWidget {
-  const LaundryKonnect({Key key}) : super(key: key);
+  const LaundryKonnect({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override

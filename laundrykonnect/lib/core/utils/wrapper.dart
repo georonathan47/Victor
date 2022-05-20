@@ -14,7 +14,7 @@ final FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class Wrapper extends StatefulWidget {
-  const Wrapper({Key key}) : super(key: key);
+  const Wrapper({Key? key}) : super(key: key);
 
   @override
   State<Wrapper> createState() => _WrapperState();
@@ -23,9 +23,9 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   bool isBusy = false;
   bool isLoggedIn = false;
-  String errorMessage;
-  String name;
-  String picture;
+  late String errorMessage;
+  late String name;
+  late String picture;
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +77,8 @@ class _WrapperState extends State<Wrapper> {
           );
   }
 
-  Map<String, dynamic> parseIdToken(String idToken) {
-    final parts = idToken.split(r'.');
+  Map<String, dynamic> parseIdToken(String? idToken) {
+    final parts = idToken!.split(r'.');
     assert(parts.length == 3);
 
     return jsonDecode(
@@ -88,7 +88,7 @@ class _WrapperState extends State<Wrapper> {
     );
   }
 
-  Future<Map> getUserDetails(String accessToken) async {
+  Future<Map> getUserDetails(String? accessToken) async {
     const url = 'https://$AUTH0_DOMAIN/userinfo';
     final response = await http.get(
       Uri.parse(url),
@@ -102,16 +102,16 @@ class _WrapperState extends State<Wrapper> {
     }
   }
 
-  Future<void> loginAction({bool showIndicator}) async {
+  Future<void> loginAction({bool? showIndicator}) async {
     setState(() {
       isBusy = true;
       errorMessage = '';
     });
 
-    showIndicator ? const CircularProgressIndicator.adaptive() : null;
+    showIndicator! ? const CircularProgressIndicator.adaptive() : null;
 
     try {
-      final AuthorizationTokenResponse result =
+      final AuthorizationTokenResponse? result =
           await appAuth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
           CLIENT_ID,
@@ -122,12 +122,12 @@ class _WrapperState extends State<Wrapper> {
         ),
       );
 
-      final idToken = parseIdToken(result.idToken);
-      final profile = await getUserDetails(result.accessToken);
+      final idToken = parseIdToken(result?.idToken);
+      final profile = await getUserDetails(result?.accessToken);
 
       await secureStorage.write(
         key: 'refresh_token',
-        value: result.refreshToken,
+        value: result?.refreshToken,
       );
 
       setState(() {
@@ -177,10 +177,10 @@ class _WrapperState extends State<Wrapper> {
         refreshToken: storedRefreshToken,
       ));
 
-      final idToken = parseIdToken(response.idToken);
-      final profile = await getUserDetails(response.accessToken);
+      final idToken = parseIdToken(response?.idToken);
+      final profile = await getUserDetails(response?.accessToken);
 
-      secureStorage.write(key: 'refresh_token', value: response.refreshToken);
+      secureStorage.write(key: 'refresh_token', value: response?.refreshToken);
 
       setState(() {
         isBusy = false;

@@ -7,7 +7,7 @@ import 'src/features/Dashboard/presentation/pages/dashboardScreen.dart';
 import 'src/features/Services/presentation/pages/services.dart';
 
 class Index extends StatefulWidget {
-  const Index({Key key}) : super(key: key);
+  const Index({Key? key}) : super(key: key);
 
   @override
   State<Index> createState() => _IndexState();
@@ -26,17 +26,17 @@ class _IndexState extends State<Index> {
 
   Widget navigator(int index) {
     if (index == 0) {
-      return const DashboardScreen();
+      return DashboardScreen();
     } else if (index == 1) {
-      return const ServicesScreen();
+      return ServicesScreen();
     } else if (index == 2) {
-      return const HistoryScreen();
+      return HistoryScreen();
       // } else if (index == 3) {
       //   return const LitigationScreen();
       // } else if (index == 4) {
       //   return const AccountScreen();
     } else {
-      return null;
+      return DashboardScreen();
     }
   }
 

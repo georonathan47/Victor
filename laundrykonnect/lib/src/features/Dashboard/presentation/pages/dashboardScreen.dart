@@ -10,7 +10,7 @@ import 'package:laundrykonnect/src/features/History/presentation/pages/history.d
 import '../../../../../core/components/appBar.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key key}) : super(key: key);
+  const DashboardScreen({Key? key}) : super(key: key);
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -152,7 +152,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const HistoryScreen(
+                                    builder: (context) => HistoryScreen(
                                       showBefore: true,
                                     ),
                                   ),
@@ -214,11 +214,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
                   children: [
-                    Center(child: Image.asset(data[index].image)),
+                    Center(child: Image.asset(data[index].image!)),
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: addHeaderTextWithStyle(
-                        data[index].title,
+                        data[index].title!,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -263,11 +263,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Stack(
                     children: [
-                      Image.asset(services[index].image),
+                      Image.asset(services[index].image!),
                       Align(
                         alignment: Alignment.topRight,
                         child: addSubText(
-                          services[index].title,
+                          services[index].title!,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -293,8 +293,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 }
 
 class Services {
-  final String image;
-  final String title;
+  final String? image;
+  final String? title;
 
   const Services({
     this.image,
@@ -303,8 +303,8 @@ class Services {
 }
 
 class Orders {
-  final String image;
-  final String title;
+  final String? image;
+  final String? title;
 
   const Orders({
     this.image,
