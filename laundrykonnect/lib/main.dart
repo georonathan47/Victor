@@ -1,6 +1,7 @@
 // import 'package:flex_color_scheme/flex_color_scheme.dart';
 // ignore_for_file: no_logic_in_create_state
 import 'package:flutter/material.dart';
+import 'Index.dart';
 import 'splash2.dart';
 
 // import 'Splash.dart';
@@ -18,7 +19,8 @@ class LaundryKonnect extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen2(),
+      // home: SplashScreen2(),
+      home: Index(),
     );
   }
 }

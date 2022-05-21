@@ -2,7 +2,7 @@
     package="com.example.laundrykonnect">
    <application
         android:label="Laundry Konect"
-        android:name="${applicationName}"
+       
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

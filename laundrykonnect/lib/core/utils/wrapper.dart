@@ -36,42 +36,44 @@ class _WrapperState extends State<Wrapper> {
             decoration: const BoxDecoration(color: kBACKGROUND_COLOR),
             padding: const EdgeInsets.all(25),
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 175),
-              child: Column(
-                children: [
-                  Image.asset('assets/images/logo.png'),
-                  addVertical(20),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * .065,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: kSecondColor,
-                        // side: Border.all(const Radius.circular(15)),
-                        // shape: ,
-                      ),
-                      onPressed: () => loginAction(showIndicator: true),
-                      // .then(
-                      //   (value) => Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => const Index(),
-                      //     ),
-                      //   ),
-                      // ),
-                      child: addSubText(
-                        'LOGIN',
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontStyle: FontStyle.normal,
+              padding: const EdgeInsets.symmetric(vertical: 125),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Image.asset('assets/images/logo.png'),
+                    // addVertical(20),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * .065,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: kSecondColor,
+                          // side: Border.all(const Radius.circular(15)),
+                          // shape: ,
+                        ),
+                        onPressed: () => loginAction(showIndicator: true),
+                        // .then(
+                        //   (value) => Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => const Index(),
+                        //     ),
+                        //   ),
+                        // ),
+                        child: addSubText(
+                          'LOGIN',
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontStyle: FontStyle.normal,
+                        ),
                       ),
                     ),
-                  ),
-                  addVertical(20),
-                  isBusy
-                      ? const CircularProgressIndicator.adaptive()
-                      : Container(),
-                ],
+                    addVertical(35),
+                    isBusy
+                        ? const CircularProgressIndicator.adaptive()
+                        : Container(),
+                  ],
+                ),
               ),
             ),
           );

@@ -26,17 +26,17 @@ class _IndexState extends State<Index> {
 
   Widget navigator(int index) {
     if (index == 0) {
-      return DashboardScreen();
+      return const DashboardScreen();
     } else if (index == 1) {
-      return ServicesScreen();
+      return const ServicesScreen();
     } else if (index == 2) {
-      return HistoryScreen();
+      return const HistoryScreen();
       // } else if (index == 3) {
       //   return const LitigationScreen();
       // } else if (index == 4) {
       //   return const AccountScreen();
     } else {
-      return DashboardScreen();
+      return const DashboardScreen();
     }
   }
 
