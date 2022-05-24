@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/widgetFunctions.dart';
 
-AppBar appBar(String? text, bool? isDashboard, bool? isIndex,
-    {BuildContext? context}) {
+AppBar appBar(String text, bool isDashboard, bool isIndex,
+    {BuildContext context}) {
   return AppBar(
     backgroundColor: AZURE,
     elevation: 0.5,
-    leading: isDashboard!
+    leading: isDashboard
         ? Padding(
             padding: EdgeInsets.symmetric(horizontal: 7.5),
             child: Image.asset(
@@ -20,10 +20,10 @@ AppBar appBar(String? text, bool? isDashboard, bool? isIndex,
             ),
           )
         : 
-            (isIndex!)
+            (isIndex)
                 ? null
                 : IconButton(
-                    onPressed: () => Navigator.pop(context!),
+                    onPressed: () => Navigator.pop(context),
                     icon: const Icon(
                       Icons.navigate_before,
                       color: Colors.black,
@@ -32,12 +32,12 @@ AppBar appBar(String? text, bool? isDashboard, bool? isIndex,
                   ),
           
     centerTitle: true,
-    title: addSubText(text!, fontStyle: FontStyle.normal),
+    title: addSubText(text, fontStyle: FontStyle.normal),
   );
 }
 
 AppBar appBarNoLogo(String text, bool isIndex, Color color,
-    {BuildContext? context}) {
+    {BuildContext context}) {
   return AppBar(
     backgroundColor: AZURE,
     elevation: 0.5,
@@ -45,7 +45,7 @@ AppBar appBarNoLogo(String text, bool isIndex, Color color,
     leading: isIndex
         ? null
         : IconButton(
-            onPressed: () => Navigator.pop(context!),
+            onPressed: () => Navigator.pop(context),
             icon: Icon(
               Icons.navigate_before,
               color: color,

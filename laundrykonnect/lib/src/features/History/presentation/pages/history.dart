@@ -6,12 +6,12 @@ import 'package:laundrykonnect/core/constants/colors.dart';
 import 'package:laundrykonnect/core/constants/widgetFunctions.dart';
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key, this.showBefore}) : super(key: key);
+  const HistoryScreen({Key key, this.showBefore}) : super(key: key);
 
-  final bool? showBefore;
+  final bool showBefore;
 
   @override
-  State<HistoryScreen> createState() => _HistoryScreenState(showBefore!);
+  State<HistoryScreen> createState() => _HistoryScreenState(showBefore);
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {

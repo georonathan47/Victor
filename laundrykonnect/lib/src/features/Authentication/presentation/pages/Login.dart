@@ -7,7 +7,7 @@ class LoginAndRegister extends StatelessWidget {
   final loginAction;
   final String loginError;
 
-  const LoginAndRegister(this.loginAction, this.loginError, {Key? key})
+  const LoginAndRegister(this.loginAction, this.loginError, {Key key})
       : super(key: key);
 
   @override

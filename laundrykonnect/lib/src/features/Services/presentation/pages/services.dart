@@ -8,7 +8,7 @@ import '../../../../../core/constants/widgetFunctions.dart';
 import '../../data/models/ServicesCard.dart';
 
 class ServicesScreen extends StatefulWidget {
-  const ServicesScreen({Key? key}) : super(key: key);
+  const ServicesScreen({Key key}) : super(key: key);
 
   @override
   State<ServicesScreen> createState() => _ServicesScreenState();

@@ -7,7 +7,7 @@ import 'src/features/Dashboard/presentation/pages/dashboardScreen.dart';
 import 'src/features/Services/presentation/pages/services.dart';
 
 class Index extends StatefulWidget {
-  const Index({Key? key}) : super(key: key);
+  const Index({Key key}) : super(key: key);
 
   @override
   State<Index> createState() => _IndexState();

@@ -6,12 +6,12 @@ import 'package:mockito/mockito.dart';
 class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
 
 void main() {
-  NetworkInfoImpl? networkInfo;
-  MockDataConnectionChecker? mockDataConnectionChecker;
+  NetworkInfoImpl networkInfo;
+  MockDataConnectionChecker mockDataConnectionChecker;
 
   setUp(() {
     mockDataConnectionChecker = MockDataConnectionChecker();
-    networkInfo = NetworkInfoImpl(mockDataConnectionChecker!);
+    networkInfo = NetworkInfoImpl(mockDataConnectionChecker);
   });
 
   group('isConnected', () {
@@ -21,13 +21,13 @@ void main() {
         // arrange
         final tHasConnectionFuture = Future.value(true);
 
-        when(mockDataConnectionChecker!.hasConnection)
+        when(mockDataConnectionChecker.hasConnection)
             .thenAnswer((_) => tHasConnectionFuture);
         // act
         // NOTICE: We're NOT awaiting the result
-        final result = networkInfo!.isConnected;
+        final result = networkInfo.isConnected;
         // assert
-        verify(mockDataConnectionChecker!.hasConnection);
+        verify(mockDataConnectionChecker.hasConnection);
         // Utilizing Dart's default referential equality.
         // Only references to the same object are equal.
         expect(result, tHasConnectionFuture);

@@ -12,7 +12,7 @@ import 'Index.dart';
 import 'core/utils/Path.dart';
 
 class SplashScreen2 extends StatefulWidget {
-  const SplashScreen2({Key? key}) : super(key: key);
+  const SplashScreen2({Key key}) : super(key: key);
 
   @override
   _SplashScreen2State createState() => _SplashScreen2State();
@@ -25,19 +25,19 @@ class _SplashScreen2State extends State<SplashScreen2>
   double _textOpacity = 0.0;
   double _containerOpacity = 0.0;
 
-  late AnimationController _controller;
-  late Animation<double> animation1;
+  AnimationController _controller;
+  Animation<double> animation1;
 
   final FlutterAppAuth appAuth = FlutterAppAuth();
   FlutterSecureStorage secureStorage = const FlutterSecureStorage();
   bool isBusy = false;
   bool isLoggedIn = false;
-  late String errorMessage;
-  late String name;
-  late String picture;
+  String errorMessage;
+  String name;
+  String picture;
 
-  Map<String, dynamic> parseIdToken(String? idToken) {
-    final parts = idToken!.split(r'.');
+  Map<String, dynamic> parseIdToken(String idToken) {
+    final parts = idToken.split(r'.');
     assert(parts.length == 3);
 
     return jsonDecode(
@@ -47,7 +47,7 @@ class _SplashScreen2State extends State<SplashScreen2>
     );
   }
 
-  Future<Map> getUserDetails(String? accessToken) async {
+  Future<Map> getUserDetails(String accessToken) async {
     const url = 'https://$AUTH0_DOMAIN/userinfo';
     final response = await http.get(
       Uri.parse(url),
@@ -68,7 +68,7 @@ class _SplashScreen2State extends State<SplashScreen2>
     });
 
     try {
-      final AuthorizationTokenResponse? result =
+      final AuthorizationTokenResponse result =
           await appAuth.authorizeAndExchangeCode(
         AuthorizationTokenRequest(
           CLIENT_ID,
