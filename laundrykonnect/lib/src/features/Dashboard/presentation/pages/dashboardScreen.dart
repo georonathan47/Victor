@@ -22,8 +22,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       image: 'assets/images/2.jpeg',
       title: 'Ironing',
     ),
+    // Orders(
+    //   image: 'assets/images/1.webp',
+    //   title: 'Washing',
+    // ),
     Orders(
-      image: 'assets/images/1.webp',
+      image: 'assets/images/4.jpeg',
       title: 'Washing',
     ),
     Orders(
@@ -50,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       title: 'Washing',
     ),
     Services(
-      image: 'assets/images/3.jpeg',
+      image: 'assets/images/2.jpeg',
       title: 'Ironing',
     ),
     Services(

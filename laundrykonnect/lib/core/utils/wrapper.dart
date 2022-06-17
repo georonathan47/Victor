@@ -29,9 +29,8 @@ class _WrapperState extends State<Wrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoggedIn
-        ? const Index()
-        : Container(
+    return !isLoggedIn
+        ? Container(
             height: MediaQuery.of(context).size.height * 2.275,
             decoration: const BoxDecoration(color: kBACKGROUND_COLOR),
             padding: const EdgeInsets.all(25),
@@ -76,7 +75,8 @@ class _WrapperState extends State<Wrapper> {
                 ),
               ),
             ),
-          );
+          )
+        : const Index();
   }
 
   Map<String, dynamic> parseIdToken(String idToken) {

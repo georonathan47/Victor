@@ -138,7 +138,7 @@ class _SplashScreen2State extends State<SplashScreen2>
       setState(() {
         Navigator.pushReplacement(
           context,
-          PageTransition(Wrapper()),
+          PageTransition(const Wrapper()),
         );
       });
       Future.delayed(const Duration(milliseconds: 2500));

@@ -35,8 +35,8 @@ class _IndexState extends State<Index> {
       //   return const LitigationScreen();
       // } else if (index == 4) {
       //   return const AccountScreen();
-    } else {
-      return const DashboardScreen();
+    // } else {
+    //   return const DashboardScreen();
     }
   }
 
@@ -76,13 +76,13 @@ class _IndexState extends State<Index> {
           ),
           label: 'History',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.more_horiz_outlined,
-            size: 30,
-          ),
-          label: 'MORE',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.more_horiz_outlined,
+        //     size: 30,
+        //   ),
+        //   label: 'MORE',
+        // ),
       ],
     );
   }
