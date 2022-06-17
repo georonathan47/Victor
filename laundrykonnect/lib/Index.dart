@@ -27,7 +27,7 @@ class _IndexState extends State<Index> {
 
   Widget navigator(int index) {
     if (index == 0) {
-      return const DashboardScreen(name: "${widget.name}");
+      return  DashboardScreen(name: widget.name);
     } else if (index == 1) {
       return const ServicesScreen();
     } else if (index == 2) {

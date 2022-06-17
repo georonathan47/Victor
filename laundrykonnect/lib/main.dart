@@ -19,8 +19,8 @@ class LaundryKonnect extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen2(),
-      // home: Index(),
+      // home: SplashScreen2(),
+      home: Index(name: "victor"),
     );
   }
 }

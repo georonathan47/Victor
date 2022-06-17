@@ -8,6 +8,7 @@ import 'package:laundrykonnect/src/features/Dashboard/presentation/pages/viewAll
 import 'package:laundrykonnect/src/features/History/presentation/pages/history.dart';
 
 import '../../../../../core/components/appBar.dart';
+import '../../../Services/presentation/pages/services.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String name;
@@ -264,22 +265,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
               width: MediaQuery.of(context).size.width * 0.45,
               child: Card(
                 color: Colors.black87,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Stack(
-                    children: [
-                      Image.asset(services[index].image),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: addSubText(
-                          services[index].title,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic,
+                child: GestureDetector(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ServicesScreen(service: data[index]))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      children: [
+                        Image.asset(services[index].image),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: addSubText(
+                            services[index].title,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

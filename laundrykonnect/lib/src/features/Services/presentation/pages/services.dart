@@ -3,12 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:laundrykonnect/core/components/appBar.dart';
 import 'package:laundrykonnect/core/constants/colors.dart';
+import 'package:laundrykonnect/src/features/Dashboard/presentation/pages/dashboardScreen.dart';
 
 import '../../../../../core/constants/widgetFunctions.dart';
 import '../../data/models/ServicesCard.dart';
 
 class ServicesScreen extends StatefulWidget {
-  const ServicesScreen({Key key}) : super(key: key);
+  const ServicesScreen({Key key, Orders service}) : super(key: key);
 
   @override
   State<ServicesScreen> createState() => _ServicesScreenState();
