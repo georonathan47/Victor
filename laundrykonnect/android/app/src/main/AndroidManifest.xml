@@ -3,6 +3,7 @@
    <application
         android:label="Laundry Konect"
        
+
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

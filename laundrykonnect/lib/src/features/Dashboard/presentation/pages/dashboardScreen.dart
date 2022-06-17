@@ -19,15 +19,15 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Orders> data = const [
     Orders(
-      image: 'assets/images/shirts.png',
+      image: 'assets/images/2.jpeg',
       title: 'Ironing',
     ),
     Orders(
-      image: 'assets/images/washing-machine.png',
+      image: 'assets/images/1.webp',
       title: 'Washing',
     ),
     Orders(
-      image: 'assets/images/washing-machine.png',
+      image: 'assets/images/4.jpeg',
       title: 'Washing',
     ),
     Orders(
@@ -46,11 +46,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List<Services> services = const [
     Services(
-      image: 'assets/images/washing-machine.png',
+      image: 'assets/images/4.jpeg',
       title: 'Washing',
     ),
     Services(
-      image: 'assets/images/iron.png',
+      image: 'assets/images/3.jpeg',
       title: 'Ironing',
     ),
     Services(
@@ -58,7 +58,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       title: 'Dry Cleaning',
     ),
     Services(
-      image: 'assets/images/washing-machine.png',
+      image: 'assets/images/laundry1.jpeg',
       title: 'Bulk Washing',
     ),
   ];
