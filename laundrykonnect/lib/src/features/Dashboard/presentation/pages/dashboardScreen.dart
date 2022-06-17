@@ -10,7 +10,8 @@ import 'package:laundrykonnect/src/features/History/presentation/pages/history.d
 import '../../../../../core/components/appBar.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key key}) : super(key: key);
+  final String name;
+  const DashboardScreen({Key key, this.name}) : super(key: key);
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -58,7 +59,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       title: 'Ironing',
     ),
     Services(
-      image: 'assets/images/laundry.png',
+      image: 'assets/images/newImage.jpeg',
       title: 'Dry Cleaning',
     ),
     Services(
@@ -103,7 +104,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         addVertical(10),
                         Text(
-                          'Victor',
+                          widget.name,
                           style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -198,7 +199,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: 5,
+        itemCount: 3,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {

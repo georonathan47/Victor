@@ -7,7 +7,8 @@ import 'src/features/Dashboard/presentation/pages/dashboardScreen.dart';
 import 'src/features/Services/presentation/pages/services.dart';
 
 class Index extends StatefulWidget {
-  const Index({Key key}) : super(key: key);
+  final String name;
+  const Index({Key key, this.name}) : super(key: key);
 
   @override
   State<Index> createState() => _IndexState();
@@ -26,7 +27,7 @@ class _IndexState extends State<Index> {
 
   Widget navigator(int index) {
     if (index == 0) {
-      return const DashboardScreen();
+      return const DashboardScreen(name: "${widget.name}");
     } else if (index == 1) {
       return const ServicesScreen();
     } else if (index == 2) {

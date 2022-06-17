@@ -19,14 +19,15 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: appBarNoLogo('Services', true, Colors.transparent, context: context),
+      appBar:
+          appBarNoLogo('Services', true, Colors.transparent, context: context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration: const BoxDecoration(color: BACKGROUND_COLOR),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            addHeaderText('Our services include: '), 
+            addHeaderText('Our services include: '),
             const Divider(thickness: .75, color: kBACKGROUND_COLOR),
             addVertical(15),
             Row(
@@ -36,15 +37,15 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 Expanded(
                   child: ServicesCard(
                     'Washing',
-                    'assets/images/washing-machine.png',
+                    'assets/images/4.jpeg',
                     context,
                   ),
                 ),
                 addHorizontal(10),
                 Expanded(
                   child: ServicesCard(
-                    'Dry Cleaning',
-                    'assets/images/logo.png',
+                    'Bulk Washing',
+                    'assets/images/laundry1.jpeg',
                     context,
                   ),
                 ),
@@ -58,7 +59,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 Expanded(
                   child: ServicesCard(
                     'Ironing',
-                    'assets/images/iron.png',
+                    'assets/images/2.jpeg',
                     context,
                   ),
                 ),
@@ -66,7 +67,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 Expanded(
                   child: ServicesCard(
                     'Dry Cleaning',
-                    'assets/images/laundry.png',
+                    'assets/images/newImage.jpeg',
                     context,
                   ),
                 ),
